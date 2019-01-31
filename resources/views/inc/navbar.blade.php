@@ -6,9 +6,9 @@
           <span class="navbar-toggler-icon"></span>
         </button> --}}
 
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
 
-                <div class="container">
+                <div class="container text-justify">
                      <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'MYAPP') }}
                     </a>

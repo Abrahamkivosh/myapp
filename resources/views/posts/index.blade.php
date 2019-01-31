@@ -8,7 +8,7 @@
          <i class="fas fa-comment-edit    ">
         <h3> <a href="/posts/{{ $post->id }}"> {{ $post ->title }}<h3></a>
             <h4 class="Well">{!! $post->body !!}</h4>
-             <small> CREATED ON {{ $post->created_at }} by {{  }} }}</small></i><br />
+             <small> CREATED ON {{ $post->created_at }}</small></i><br />
     </div>
 
     @endforeach
