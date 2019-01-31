@@ -8,7 +8,8 @@
 
     {{ Form::text('title', '', ['class' => 'form-control','placeholder' => 'Title'])}}
 
-    {!! Form::textarea('body', '', ['id' => 'article-ckeditor','class' => 'form-control','placeholder' => 'body text']) !!}
+    {{ form::label('body','Body') }}
+    {!! Form::textarea('body', '', ['class' => 'form-control','placeholder' => 'body text']) !!}
     <br />
 
     {!! Form::submit('submit', ['class' => 'btn btn-primary']) !!}
