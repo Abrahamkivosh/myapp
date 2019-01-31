@@ -8,6 +8,21 @@ use App\Post;
 class PostsController extends Controller
 {
     /**
+     * Create a new controller instance.
+     */
+    public function __construct()
+    {
+        //lawis
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -78,6 +93,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
+        if (auth()->user()->id !== $post->user_id) {
+            return redirect('Post')->with('error', 'Unauthorized Page');
+        }
         $post = Post::find($id);
 
         return view('posts.edit')->with('Post', $post);
@@ -93,6 +111,10 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (auth()->user()->id !== $post->user_id) {
+            return redirect('Post')->with('error', 'Unauthorized Page');
+        }
+
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
@@ -116,6 +138,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
+        if (auth()->user()->id !== $post->user_id) {
+            return redirect('Post')->with('error', 'Unauthorized Page');
+        }
+
         $post = Post::find($id);
         $post->delete();
 

@@ -8,20 +8,33 @@
             <div class="bg bg-white">
         <h4>{{ $Post->title}}</h4><hr />
         <h4>{!! $Post->body !!}</h4>
-        <small>Created on : {{ $Post->created_at}}</small><hr />
-    </div>
+        <small>Created on : {{ $Post->created_at}} created by admin : {{ $Post->user_id}}</small><hr />
 
-            <div class=' btn btn-info'>
-        <a href="/posts/{{ $Post->id }}/edit">Edit</a>
-        </div><br /><br>
+
+
+
+        @if (!Auth::guest())
+        @if (Auth::user()->id === $Post->user_id)
+
+
+        <div class=' btn btn-info float-left'>
+                <a href="/posts/{{ $Post->id }}/edit">Edit</a>
+                </div>
 
         {!! Form::open(['action' => ['PostsController@destroy',$Post->id],'method'=>'POST','class'=> 'pull-right']) !!}
 
             {!! Form::hidden('_method', 'DELETE') !!}
 
-            {!! Form::submit('Delete post', ['class'=>' btn btn-danger']) !!}
+            {!! Form::submit('Delete post', ['class'=>' btn btn-danger float-right']) !!}
+        </div><br />
+        </div></div>
 
         {!! Form::close() !!}
+
+
+        @endif
+        @endif
+
 
 
 

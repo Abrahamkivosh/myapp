@@ -31,7 +31,14 @@
                                     <tr>
                                     <th>{{ $post->title }}<th>
                                             <td>{{ $post->body }}<td>
-                                    <th> <a href='/posts/{{ $post->id }}/edit'class='btn btn-dark'>Edit</a><th>
+                                    <td> <a href='/posts/{{ $post->id }}/edit'class='btn btn-dark'>Edit</a><td>
+                                            <td>
+                                                    {!! Form::open(['action' => ['PostsController@destroy',$post->id],'method'=>'POST','class'=> 'pull-right']) !!}
+
+                                                    {!! Form::hidden('_method', 'DELETE') !!}
+
+                                                    {!! Form::submit('Delete post', ['class'=>' btn btn-danger float-right']) !!}
+                                                <td>
                                     </tr>
 
 
